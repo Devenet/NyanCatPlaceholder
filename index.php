@@ -10,7 +10,7 @@
   define('CACHE_IMG_NAME', 'nyan_%sx%s.jpeg');
   define('SOCIAL_TITLE', 'Nyan Cat Placeholder');
   define('SOCIAL_DESC', 'Replace your depressing image placeholder by a happy Nyan Cat image placeholder.');
-  define('SOCIAL_IMG', URL.'/assets/img/nyan.png');
+  define('SOCIAL_IMG', URL.'/assets/img/nyan_social.png');
 
   function parsingError()
   {
@@ -106,7 +106,7 @@
 
       $dest = imagecreatetruecolor($this->width, $this->height);
       
-      $white = imagecolorallocate($dest, 255, 255, 255);
+      $white = imagecolorallocate($dest, 1, 38, 77);
       imagefilledrectangle($dest, 0, 0, $this->width, $this->height, $white);
       imageinterlace($dest, 1);
       imagecopyresized($dest, $src, $width_gap, $height_gap, 0, 0, $width, $height, IMG_SOURCE_WIDTH, IMG_SOURCE_HEIGHT);
@@ -177,7 +177,7 @@
 <body>
   
 <header class="dvt">
-	<h1><a href="<?php echo URL; ?>" class="img-link"><img src="<?php echo URL; ?>/100/50" alt="Nyan Cat" /></a></h1>
+	<h1><a href="<?php echo URL; ?>" class="img-link"><img src="<?php echo URL; ?>/assets/img/nyan.png" alt="Nyan Cat" /></a></h1>
 	<h2>Nyan Cat Placeholder</h2>
 </header>
 
