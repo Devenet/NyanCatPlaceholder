@@ -7,6 +7,9 @@
   define('IMG_SOURCE_RATIO', 1.66);
   define('CACHE_FOLDER', './cache/');
   define('CACHE_IMG_NAME', 'nyan_%sx%s.jpeg');
+  define('SOCIAL_TITLE', 'Nyan Cat Placeholder');
+  define('SOCIAL_DESC', 'Replace your depressing image placeholder by a happy Nyan Cat image placeholder.');
+  define('SOCIAL_IMG', URL.'/assets/img/nyan.png');
 
   function parsingError()
   {
@@ -133,7 +136,7 @@
   <meta name="copyright" content="Nicolas Devenet">
   <link type="text/plain" rel="author" href="humans.txt">
   <meta name="robots" content="index, follow, archive">
-  <meta name="description" content="Nyan Cat Placehoder">
+  <meta name="description" content="<?php echo SOCIAL_DESC; ?>">
   <link rel="shortcut icon" type="image/x-icon" href="<?php echo URL; ?>/favicon.ico">
   <link rel="icon" type="image/png" href="<?php echo URL; ?>/assets/icon/favicon.png">
   <link rel="stylesheet" href="https://s.dvt.re/devenet.eu/assets/css/devenet.css">
@@ -147,22 +150,23 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@Devenet" />
   <meta name="twitter:creator" content="@Devenet" />
-  <meta name="twitter:title" content="Nyan Cat Placeholder" />
-  <meta name="twitter:description" content="Nyan Cat Placeholder" />
-  <meta name="twitter:image" content="<?php echo URL; ?>/assets/img/nyan.png">
-  <meta property="og:title" content="Nyan Cat Placeholder" />
-  <meta itemprop="og:headline" content="Nyan Cat Placeholder" />
+  <meta name="twitter:title" content="<?php echo SOCIAL_TITLE; ?>" />
+  <meta name="twitter:description" content="<?php echo SOCIAL_DESC; ?>" />
+  <meta name="twitter:image" content="<?php echo SOCIAL_IMG; ?>">
+  <meta property="og:title" content="<?php echo SOCIAL_TITLE; ?>" />
+  <meta itemprop="og:headline" content="<?php echo SOCIAL_DESC; ?>" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="<?php echo URL; ?>" />
-  <meta property="og:image" content="<?php echo URL; ?>/assets/img/nyan.png" />
-  <meta property="og:description" content="Nyan Cat Placeholder" />
-  <meta property="og:site_name" content="Nyan Cat Placeholder &middot; Devenet" />
-  <meta itemprop="name" content="Nyan Cat Placeholder">
-  <meta itemprop="headline" content="Nyan Cat Placeholder" />
-  <meta itemprop="description" content="Nyan Cat Placeholder">
-  <meta itemprop="image" content="<?php echo URL; ?>/assets/img/nyan.png">
+  <meta property="og:image" content="<?php echo SOCIAL_IMG; ?>" />
+  <meta property="og:description" content="<?php echo SOCIAL_DESC; ?>" />
+  <meta property="og:site_name" content="<?php echo SOCIAL_TITLE; ?>" />
+  <meta itemprop="name" content="<?php echo SOCIAL_TITLE; ?>">
+  <meta itemprop="headline" content="<?php echo SOCIAL_DESC; ?>" />
+  <meta itemprop="description" content="<?php echo SOCIAL_DESC; ?>">
+  <meta itemprop="image" content="<?php echo SOCIAL_IMG; ?>">
   <style>
-    section, .space-top { margin-top: 40px; }
+    section, .space-top { margin-top: 30px; }
+    .social-desc { margin-top: -15px; font-style: italic; }
     .txt-center { text-align: center; }
     img.border { box-shadow: 0 0 10px #aaa; border-radius: 10px; }
     a.img-link { border-bottom: none; }
@@ -177,6 +181,10 @@
 </header>
 
 <div class="container">
+
+<header class="social-desc">
+  <p><?php echo SOCIAL_DESC; ?></p>
+</header>
 
 <article>
   <section>
