@@ -179,23 +179,19 @@
 <div class="container">
 
 <article>
-  <header>
-    <h3>Your illimited source of Nyan Cat placeholders is here!</h3>
-  </header>
-
   <section>
-    <p>For a <kbd>300&times;200</kbd>px Nyan Cat image placeholder, use:</p>
+    <p>For a <kbd>300&times;200px</kbd> <b>Nyan Cat</b> image placeholder, use:</p>
     <pre><a href="<?php echo URL; ?>/300/200" rel="external"><?php echo URL; ?>/<b>300</b>/<b>200</b></a></pre>
   </section>
 
   <section>
-    <p>For a <kbd>200&times;200</kbd>px Nyan Cat image placeholder, use:</p>
+    <p>For a square <kbd>200px</kbd> <b>Nyan Cat</b> image placeholder, use:</p>
     <pre><a href="<?php echo URL; ?>/200" rel="external"><?php echo URL; ?>/<b>200</b></a></pre>
   </section>
 </article>
 
 <aside class="space-top txt-center">
-  <a href="<?php echo URL; ?>/200" rel="external" class="img-link"><img src="<?php echo URL; ?>/200" alt="Nyan Cat" class="border" /></a>
+  <a href="<?php echo URL; ?>/150" rel="external" class="img-link"><img src="<?php echo URL; ?>/150" alt="Nyan Cat" class="border" /></a>
 </aside>
 	
 </div><!-- .container -->
