@@ -5,6 +5,7 @@
   define('IMG_SOURCE_WIDTH', 2500);
   define('IMG_SOURCE_HEIGHT', 1500);
   define('IMG_SOURCE_RATIO', 1.66);
+  define('IMG_COMPRESSION', 85);
   define('CACHE_FOLDER', './cache/');
   define('CACHE_IMG_NAME', 'nyan_%sx%s.jpeg');
   define('SOCIAL_TITLE', 'Nyan Cat Placeholder');
@@ -113,12 +114,12 @@
       // hack to avoid bad image format for browser
       if (isset($_GET['cache']))
       {
+        imagejpeg($dest, $image_path, IMG_COMPRESSION);
         imagedestroy($dest);
-        imagejpeg($dest, $image_path);
         exit;
       }
         
-      imagejpeg($dest);
+      imagejpeg($dest, NULL, IMG_COMPRESSION);
       imagedestroy($dest);
  
       file_get_contents(URL.'/'.$this->width.'/'.$this->height.'?cache');
