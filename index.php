@@ -197,7 +197,10 @@
 </div><!-- .container -->
 
 <footer class="container dvt">
-	<p><?php echo date('Y');?> &mdash; Made with 🌈 by <a href="https://nicolas.devenet.info" rel="external">Nicolas Devenet</a>.</p>
+	<p>
+    <?php echo date('Y');?> &mdash; Made with 🌈 by <a href="https://nicolas.devenet.info" rel="external">Nicolas Devenet</a>.
+    <br><small><a href="https://github.com/Devenet/NyanPlaceholder" rel="external">Source code</a></small>
+  </p>
 </footer>
 
 <script src="https://s.dvt.re/devenet.eu/assets/js/devenet.js"></script>

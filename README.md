@@ -4,11 +4,11 @@ Replace your depressing image placeholder by a happy Nyan Cat image placeholder.
 
 ***
 
-For a `300 × 200`px Nyan Cat image placeholder, use:
+For a `300×200px` Nyan Cat image placeholder, use:
 
     http://github.banana.dev/NyanPlaceholder/300/200
 
-For a square `200`px Nyan Cat image placeholder, use:
+For a square `200px` Nyan Cat image placeholder, use:
 
     http://github.banana.dev/NyanPlaceholder/200
 
