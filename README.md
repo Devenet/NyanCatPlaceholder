@@ -1,16 +1,25 @@
 # ![Nyan Cat](https://raw.githubusercontent.com/Devenet/NyanPlaceholder/master/assets/icon/favicon.png) Nyan Cat Placeholder 
 
-Replace your depressing image placeholder by a happy Nyan Cat image placeholder.
+Replace your depressing placeholder image by a happy Nyan Cat placeholder image.
 
 ***
 
-For a `300×200px` Nyan Cat image placeholder, use:
+☞ For a square `200px` Nyan Cat placeholder image:
+
+    http://github.banana.dev/NyanPlaceholder/200
+
+For a `300×200px` Nyan Cat placeholder image:
 
     http://github.banana.dev/NyanPlaceholder/300/200
 
-For a square `200px` Nyan Cat image placeholder, use:
 
-    http://github.banana.dev/NyanPlaceholder/200
+☞ For a _gray_ Nyan Cat placeholder image:
+
+    http://github.banana.dev/NyanPlaceholder/g/200
+
+☞ For a _blur_ Nyan Cat placeholder image:
+
+    http://github.banana.dev/NyanPlaceholder/b/200
 
 
 ![Nyan Cat](https://labs.devenet.eu/nyancat-placeholder/150)

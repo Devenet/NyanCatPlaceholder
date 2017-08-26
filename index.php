@@ -6,11 +6,13 @@
   define('IMG_SOURCE_HEIGHT', 1500);
   define('IMG_SOURCE_RATIO', 1.66);
   define('IMG_COMPRESSION', 85);
-  define('CACHE_FOLDER', './cache/');
-  define('CACHE_IMG_NAME', 'nyan_%sx%s.jpeg');
+  define('IMG_DEST_NAME', 'nyan_%sx%s');
+  define('IMG_DEST_EXTENSION', '.jpeg');
   define('SOCIAL_TITLE', 'Nyan Cat Placeholder');
-  define('SOCIAL_DESC', 'Replace your depressing image placeholder by a happy Nyan Cat image placeholder.');
+  define('SOCIAL_DESC', 'Replace your depressing placeholder image by a happy Nyan Cat placeholder image.');
   define('SOCIAL_IMG', URL.'/assets/img/nyan_social.png');
+  define('CACHE_FOLDER', './cache/');
+  define('CACHE_ENABLED', true);
 
   function parsingError()
   {
@@ -33,10 +35,16 @@
 
     $img = new NyanPlaceholder();
 
-    // do we want black and white image?
+    // do we want gray image?
     if ($r[0] === 'g')
     {
       $img->setIsGray(true);
+      array_shift($r);
+    }
+    // do we want blur image?
+    else if ($r[0] === 'b')
+    {
+      $img->setIsBlur(true);
       array_shift($r);
     }
 
@@ -63,23 +71,35 @@
     private $width;
     private $height;
     private $isGray = false;
+    private $isBlur = false;
 
     public function setWidth($width) { $this->width = $width; }
     public function setHeight($height) { $this->height = $height; }
     public function setIsGray($isGray) { $this->isGray = $isGray; }
+    public function setIsBlur($isBlur) { $this->isBlur = $isBlur; }
 
     private function fixHeight() { $this->height = empty($this->height) ? $this->width : $this->height; }
+
+    private function filename()
+    {
+      $name = sprintf(IMG_DEST_NAME, $this->width, $this->height);
+      if ($this->isGray || $this->isBlur)
+      {
+        $name .= sprintf('_%s', $this->isGray ? 'gray' : 'blur');
+      }
+      return $name.IMG_DEST_EXTENSION;
+    }
     
     public function display()
     {
       $this->fixHeight();
 
       header('Content-Type: image/jpeg');
-      header('Content-Disposition: inline; filename="nyan_'.$this->width.'x'.$this->height.'.jpeg"');
+      header('Content-Disposition: inline; filename="'.$this->filename().'"');
 
       // can we use cached image?
-      $image_path = CACHE_FOLDER.sprintf(CACHE_IMG_NAME, $this->width, $this->height);
-      if (file_exists($image_path))
+      $image_path = CACHE_FOLDER.$this->filename();
+      if (CACHE_ENABLED && file_exists($image_path))
       {
         exit(file_get_contents($image_path));
       }
@@ -106,10 +126,21 @@
 
       $dest = imagecreatetruecolor($this->width, $this->height);
       
-      $white = imagecolorallocate($dest, 1, 38, 77);
-      imagefilledrectangle($dest, 0, 0, $this->width, $this->height, $white);
+      $background = imagecolorallocate($dest, 1, 38, 77);
+      imagefilledrectangle($dest, 0, 0, $this->width, $this->height, $background);
       imageinterlace($dest, 1);
       imagecopyresized($dest, $src, $width_gap, $height_gap, 0, 0, $width, $height, IMG_SOURCE_WIDTH, IMG_SOURCE_HEIGHT);
+
+      if ($this->isGray)
+      {
+        imagefilter($dest, IMG_FILTER_GRAYSCALE);
+      }
+      else if ($this->isBlur)
+      {
+        imagefilter($dest, IMG_FILTER_GAUSSIAN_BLUR);
+        imagefilter($dest, IMG_FILTER_PIXELATE, 5, true);
+        imagefilter($dest, IMG_FILTER_GAUSSIAN_BLUR);
+      }
       
       // hack to avoid bad image format for browser
       if (isset($_GET['cache']))
@@ -122,7 +153,9 @@
       imagejpeg($dest, NULL, IMG_COMPRESSION);
       imagedestroy($dest);
  
-      file_get_contents(URL.'/'.$this->width.'/'.$this->height.'?cache');
+      // hack to avoid bad image format for browser
+      if (CACHE_ENABLED) { file_get_contents(URL.'/'.$_SERVER['QUERY_STRING'].'?cache'); }  
+      
       exit;
     }
   }
@@ -166,11 +199,20 @@
   <meta itemprop="description" content="<?php echo SOCIAL_DESC; ?>">
   <meta itemprop="image" content="<?php echo SOCIAL_IMG; ?>">
   <style>
-    section, .space-top { margin-top: 30px; }
-    .social-desc { margin-top: -15px; font-style: italic; }
-    .txt-center { text-align: center; }
-    img.border { box-shadow: 0 0 10px #aaa; border-radius: 10px; }
+    .social-desc { margin-top: -15px; font-style: italic; text-align: center; }
+    article { margin: 50px auto; }
+    section { margin: 30px 0 0 30px; clear: both; position: relative; }
+    section:before { display: block; float: left; margin-left: -30px; width: 30px; content: '\261E'; font-size: 1.25em; }
+    section pre { margin-top: -10px; font-size: .95em; }
+    section img { position: absolute; right: 0; top: 0; max-width: 100%; }
+    img.border { border-radius: 5px; box-shadow: 0 0 10px #aaa; }
     a.img-link { border-bottom: none; }
+    .clearfix:before,.clearfix:after { content: " "; display: table; }
+    .clearfix:after { clear: both; }
+    @media screen and (max-width: 700px) {
+      .social-desc { text-align: left; }
+      section img { position: relative; }
+    }
   </style>
 </head>
 
@@ -189,19 +231,26 @@
 
 <article>
   <section>
-    <p>For a <kbd>300&times;200px</kbd> <b>Nyan Cat</b> image placeholder, use:</p>
-    <pre><a href="<?php echo URL; ?>/300/200" rel="external"><?php echo URL; ?>/<b>300</b>/<b>200</b></a></pre>
+    <p>For a square <strong>100</strong>px image</p>
+    <pre><a href="<?php echo URL; ?>/100" rel="external"><?php echo URL; ?>/<b>100</b></a></pre>
+    <img src="<?php echo URL; ?>/100" alt="Nyan Cat Placeholder" class="border">
+
+    <p>For a <strong>100&times;80</strong>px image</p>
+    <pre><a href="<?php echo URL; ?>/100/80" rel="external"><?php echo URL; ?>/<b>100</b>/<b>80</b></a></pre>
   </section>
 
   <section>
-    <p>For a square <kbd>200px</kbd> <b>Nyan Cat</b> image placeholder, use:</p>
-    <pre><a href="<?php echo URL; ?>/200" rel="external"><?php echo URL; ?>/<b>200</b></a></pre>
+    <p>For a <strong>gray</strong> image</p>
+    <pre><a href="<?php echo URL; ?>/g/100" rel="external"><?php echo URL; ?>/<b>g</b>/100</a></pre>
+    <img src="<?php echo URL; ?>/g/40" alt="Nyan Cat Placeholder" class="border">
+  </section>
+
+  <section>
+    <p>For a <strong>blur</strong> image</p>
+    <pre><a href="<?php echo URL; ?>/b/100" rel="external"><?php echo URL; ?>/<b>b</b>/100</a></pre>
+    <img src="<?php echo URL; ?>/b/40" alt="Nyan Cat Placeholder" class="border">
   </section>
 </article>
-
-<aside class="space-top txt-center">
-  <a href="<?php echo URL; ?>/150" rel="external" class="img-link"><img src="<?php echo URL; ?>/150" alt="Nyan Cat" class="border" /></a>
-</aside>
 	
 </div><!-- .container -->
 
