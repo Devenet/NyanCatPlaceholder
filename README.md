@@ -6,20 +6,20 @@ Replace your depressing placeholder image by a happy Nyan Cat placeholder image.
 
 ☞ For a square `200px` Nyan Cat placeholder image:
 
-    http://github.banana.dev/NyanPlaceholder/200
+    https://labs.devenet.eu/nyancat-placeholder/200
 
 For a `300×200px` Nyan Cat placeholder image:
 
-    http://github.banana.dev/NyanPlaceholder/300/200
+    https://labs.devenet.eu/nyancat-placeholder/300/200
 
 
 ☞ For a _gray_ Nyan Cat placeholder image:
 
-    http://github.banana.dev/NyanPlaceholder/g/200
+    https://labs.devenet.eu/nyancat-placeholder/g/200
 
 ☞ For a _blur_ Nyan Cat placeholder image:
 
-    http://github.banana.dev/NyanPlaceholder/b/200
+    https://labs.devenet.eu/nyancat-placeholder/b/200
 
 
 ![Nyan Cat](https://labs.devenet.eu/nyancat-placeholder/150)
