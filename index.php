@@ -202,7 +202,7 @@
     .social-desc { margin-top: -15px; font-style: italic; text-align: center; }
     article { margin: 50px auto; }
     section { margin: 30px 0 0 30px; clear: both; position: relative; }
-    section:before { display: block; float: left; margin-left: -30px; width: 30px; content: '\261E'; font-size: 1.25em; margin-top: -6px; }
+    section:before { display: block; float: left; margin-left: -30px; width: 30px; content: '\01F431'; font-size: 1.25em; margin-top: -6px; }
     section pre { margin-top: -10px; font-size: .95em; }
     section img { position: absolute; right: 0; top: 0; max-width: 100%; }
     img.border { border-radius: 5px; box-shadow: 0 0 10px #aaa; }
