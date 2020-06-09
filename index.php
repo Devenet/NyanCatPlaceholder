@@ -173,11 +173,11 @@
   <meta name="description" content="<?php echo SOCIAL_DESC; ?>">
   <link rel="shortcut icon" type="image/x-icon" href="<?php echo URL; ?>/favicon.ico">
   <link rel="icon" type="image/png" href="<?php echo URL; ?>/assets/icon/favicon.png">
-  <link rel="stylesheet" href="https://s.dvt.re/devenet.eu/assets/css/devenet.css">
-	<!--[if lte IE 9]><link rel="stylesheet" href="https://s.dvt.re/devenet.eu/assets/css/devenet.ie.css"><![endif]-->
+  <link rel="stylesheet" href="https://dstatic.eu/devenet.eu/assets/css/devenet/v1/devenet.min.css">
+	<!--[if lte IE 9]><link rel="stylesheet" href="https://dstatic.eu/devenet.eu/assets/css/devenet/v1/devenet.ie.css"><![endif]-->
   <!--[if lt IE 9]>
-  <script src="https://s.dvt.re/dvt.re/assets/js/html5shiv.min.js"></script>
-  <script src="https://s.dvt.re/dvt.re/assets/js/respond.min.js"></script>
+  <script src="https://dstatic.eu/c/lib/bootstrap/3.3/html5shiv.min.js"></script>
+  <script src="https://dstatic.eu/c/lib/bootstrap/3.3/respond.min.js"></script>
   <![endif]-->
   <link rel="canonical" href="<?php echo URL; ?>">
   <link rel="author" href="https://plus.google.com/+NicolasDevenet" />
@@ -261,7 +261,7 @@
   </p>
 </footer>
 
-<script src="https://s.dvt.re/devenet.eu/assets/js/devenet.js"></script>
+<script src="https://dstatic.eu/devenet.eu/assets/js/devenet/v1/devenet.js"></script>
 
 </body>
 </html>
