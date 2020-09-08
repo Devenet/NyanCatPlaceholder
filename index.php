@@ -1,7 +1,7 @@
 <?php
   require 'nyancatplaceholder.php';
   define('SOCIAL_TITLE', 'Nyan Cat placeholder');
-  define('SOCIAL_DESC', 'Replace your depressing placeholder image by a happy Nyan Cat placeholder image.');
+  define('SOCIAL_DESC', 'Replace your depressing placeholder image by a happy Nyan Cat.');
   define('SOCIAL_IMG', URL.'/assets/img/nyan_social.png');
 ?><!doctype html>
 <html lang="en" itemscope itemtype="http://schema.org/Article">
